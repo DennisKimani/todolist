@@ -1,18 +1,13 @@
 import { Component } from '@angular/core';
+import { Task } from './task.model';
 
 @Component({
   selector: 'my-app',
   template: `
   <div class="container">
     <h1>My First Angular 2 App</h1>
-    <h3>Here are my favorite pies!</h3>
-    <div *ngFor="let currentPie of favoritePies">
-      <p>{{currentPie}}</p>
-    </div>
-    <div *ngFor="let currentTask of tasks">
-      <h3>{{ currentTask.description }}</h3>
-      <button (click)="showDetails(currentTask)">Edit</button>
-    </div>
+    <pies></pies>
+    <task-list></task-list>
     <div *ngIf="selectedTask">
       <h1>Edit Task</h1>
       <div>
@@ -30,13 +25,6 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  favoritePies: string[] = ["Apple", "Banana Cream", "Blackberry"];
-  tasks: Task[] = [
-      new Task("Create To-Do List app.", 0),
-      new Task("Learn Kung Fu.", 1),
-      new Task("Rewatch all the Lord of the Rings movies.", 2),
-      new Task("Do the laundry.", 3)
-  ];
   selectedTask: Task = null;
   showDetails(clickedTask: Task) {
     this.selectedTask = clickedTask;
@@ -44,9 +32,4 @@ export class AppComponent {
   finishedEditing() {
     this.selectedTask = null;
   }
-}
-
-export class Task {
-  public done: boolean = false;
-  constructor(public description: string, public id: number) {   }
 }
