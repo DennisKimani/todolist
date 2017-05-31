@@ -5,24 +5,26 @@ import { Component } from '@angular/core';
   template: `
   <div class="container">
     <h1>My First Angular 2 App</h1>
-    <h3 (click)="doStuff(currentTask)" *ngFor="let currentTask of tasks">{{ currentTask.description }}</h3>
+    <h3 (click)="showDetails(currentTask)" *ngFor="let currentTask of tasks">{{ currentTask.description }}</h3>
+    <div>
+      <h1>Edit Task</h1>
+      <p>Description: {{ selectedTask.description }}</p>
+      <p>Task ID: {{ selectedTask.id }}</p>
+    </div>
   </div>
   `
 })
 
 export class AppComponent {
   public tasks: Task[] = [
-      new Task("Going out for swimming.", 0),
-      new Task("practising how to code.", 1),
-      new Task("being sarcastic on most of the things i do.", 2),
-      new Task("doing what i do best.", 3)
+      new Task("Create To-Do List app.", 0),
+      new Task("Learn Kung Fu.", 1),
+      new Task("Rewatch all the Lord of the Rings movies.", 2),
+      new Task("Do the laundry.", 3)
   ];
-  doStuff(clickedTask: Task) {
-    if(clickedTask.done === true) {
-      alert("This task is done!");
-    } else {
-      alert("This task is not completed yet! Get to work!");
-    }
+  selectedTask: Task = this.tasks[0];
+  showDetails(clickedTask: Task) {
+    this.selectedTask = clickedTask;
   }
 }
 
