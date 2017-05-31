@@ -3,11 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'pies',
   template: `
-  <h3>Here are my favorite pies!</h3>
-  <div *ngFor="let currentPie of favoritePies">
-    <p>{{currentPie}}</p>
-  </div>
-  `
+  <div class="container">
+      <h1>My First Angular 2 App</h1>
+      <pies></pies>
 })
 
 export class PiesListComponent {
