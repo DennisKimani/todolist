@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
       <h3>{{ currentTask.description }}</h3>
       <button (click)="showDetails(currentTask)">Edit</button>
     </div>
-    <h1>Edit Task</h1>
+    <div *ngIf="selectedTask">
+      <h1>Edit Task</h1>
     <div>
       <label>Enter Task Description:</label>
       <input [(ngModel)]="selectedTask.description">
@@ -17,8 +18,10 @@ import { Component } from '@angular/core';
     <div>
       <label>Enter Task ID:</label>
       <input [(ngModel)]="selectedTask.id">
+      <button (click)="finishedEditing()">Done</button>
     </div>
   </div>
+</div>
   `
 })
 
@@ -32,6 +35,9 @@ export class AppComponent {
   selectedTask: Task = this.tasks[0];
   showDetails(clickedTask: Task) {
     this.selectedTask = clickedTask;
+  }
+  finishedEditing() {
+    this.selectedTask = null;
   }
 }
 
