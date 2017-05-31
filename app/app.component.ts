@@ -32,7 +32,7 @@ export class AppComponent {
       new Task("Rewatch all the Lord of the Rings movies.", 2),
       new Task("Do the laundry.", 3)
   ];
-  selectedTask: Task = this.tasks[0];
+  selectedTask: Task = null;
   showDetails(clickedTask: Task) {
     this.selectedTask = clickedTask;
   }
